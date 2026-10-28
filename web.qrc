@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/web">
+    <file alias="index.html">web/index.html</file>
+    <file alias="css/app.css">web/css/app.css</file>
+    <file alias="js/api.js">web/js/api.js</file>
+    <file alias="js/theme.js">web/js/theme.js</file>
+    <file alias="js/player.js">web/js/player.js</file>
+    <file alias="js/ui.js">web/js/ui.js</file>
+    <file alias="js/store.js">web/js/store.js</file>
+    <file alias="js/dialogs.js">web/js/dialogs.js</file>
+    <file alias="js/components.js">web/js/components.js</file>
+    <file alias="js/views.js">web/js/views.js</file>
+    <file alias="js/app.js">web/js/app.js</file>
+    <file alias="favicon.svg">web/favicon.svg</file>
+    <file alias="manifest.webmanifest">web/manifest.webmanifest</file>
+  </qresource>
+</RCC>

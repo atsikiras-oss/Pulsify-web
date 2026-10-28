@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Pulsify</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="offline">Lost connection to the Pulsify server. Reconnecting&hellip;</div>
+
+  <div id="app">
+    <aside id="sidebar">
+      <section class="card-panel nav-card">
+        <div class="logo"><span class="logo-dot"></span><span>Pulsify</span></div>
+        <nav id="nav"></nav>
+      </section>
+      <section class="card-panel pl-card">
+        <div class="pl-head">
+          <span class="pl-title">Playlists</span>
+          <span class="grow"></span>
+          <button id="btn-import" class="pill" title="Import playlists from YouTube, Google or a CSV (Ctrl+I)">Import</button>
+          <button id="btn-new-pl" class="pill" title="New playlist">+&nbsp; Create</button>
+        </div>
+        <div id="pl-empty" class="empty-card">
+          <div class="ec-title">Create your first playlist</div>
+          <div class="ec-sub">Add songs from your library or YouTube. Right-click a song and choose &ldquo;Add to playlist&rdquo;.</div>
+          <div class="row gap wrap">
+            <button id="ec-create" class="pill white">Create playlist</button>
+            <button id="ec-import" class="pill">Import from YouTube</button>
+          </div>
+        </div>
+        <div id="playlists"></div>
+      </section>
+    </aside>
+
+    <main id="main" class="card-panel">
+      <header id="topbar">
+        <button id="btn-back" class="icon-btn round" title="Back"></button>
+        <button id="btn-fwd" class="icon-btn round" title="Forward"></button>
+        <label class="searchbox">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input id="search" type="search" placeholder="What do you want to play?  ( / )" autocomplete="off" spellcheck="false">
+        </label>
+        <span class="grow"></span>
+        <button id="btn-settings" class="icon-btn round" title="Settings"></button>
+        <button id="btn-account" class="icon-btn round avatar-btn" title="Google account"></button>
+      </header>
+      <div id="view"></div>
+
+      <!-- full-height now-playing sheet: slides up over the page, the player bar stays visible -->
+      <div id="sheet" aria-hidden="true">
+        <div class="sheet-bgs"></div>
+        <button id="sheet-close" class="icon-btn round" title="Close (Esc)"></button>
+        <div class="sheet-tabs">
+          <button id="sheet-tab-cover" class="seg active">Now playing</button>
+          <button id="sheet-tab-lyrics" class="seg">Lyrics</button>
+        </div>
+        <div class="sheet-inner">
+          <div class="sheet-left">
+            <div class="sheet-art"></div>
+            <div class="sheet-title"></div>
+            <div class="sheet-artist"></div>
+          </div>
+          <div class="sheet-right" data-scroll></div>
+        </div>
+      </div>
+    </main>
+
+    <aside id="rightpanel" class="card-panel"><div class="rp-inner"></div></aside>
+
+    <footer id="playerbar" class="card-panel">
+      <div class="pb-left">
+        <button id="pb-art" class="pb-art" title="Open now playing"></button>
+        <div class="pb-meta">
+          <div id="pb-title" class="ttitle"></div>
+          <div id="pb-artist" class="tartist"></div>
+        </div>
+        <button id="pb-add" class="icon-btn" title="Add to playlist"></button>
+      </div>
+      <div class="pb-center">
+        <div class="pb-buttons">
+          <button id="pb-shuffle" class="icon-btn tog" title="Shuffle"></button>
+          <button id="pb-prev" class="icon-btn" title="Previous"></button>
+          <button id="pb-play" class="play-btn" title="Play"></button>
+          <button id="pb-next" class="icon-btn" title="Next"></button>
+          <button id="pb-repeat" class="icon-btn tog" title="Repeat"></button>
+        </div>
+        <div class="pb-seek">
+          <span id="pb-cur" class="time r">0:00</span>
+          <input id="pb-seek" class="range" type="range" min="0" max="1000" value="0" step="1" aria-label="Seek">
+          <span id="pb-dur" class="time">0:00</span>
+        </div>
+      </div>
+      <div class="pb-right">
+        <button id="pb-lyrics" class="icon-btn tog" title="Lyrics (L)"></button>
+        <button id="btn-panel" class="icon-btn tog" title="Now playing info (Ctrl+Shift+I)"></button>
+        <button id="pb-queue" class="icon-btn tog" title="Queue"></button>
+        <button id="pb-mute" class="icon-btn" title="Mute (M)"></button>
+        <input id="pb-vol" class="range vol" type="range" min="0" max="100" value="80" aria-label="Volume">
+      </div>
+    </footer>
+  </div>
+
+  <div id="toasts"></div>
+  <div id="menu-root"></div>
+  <div id="modal-root"></div>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
